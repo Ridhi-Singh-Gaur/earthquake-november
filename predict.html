@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earthquake Prediction App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            text-align: center;
+            margin: 0;
+            padding: 50px 0;
+        }
+
+        form {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            display: inline-block;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+        }
+
+        input {
+            margin: 10px;
+            padding: 10px;
+            width: 220px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+        }
+
+        button {
+            background-color: #ff7e5f;
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #eb6750;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .result {
+            margin-top: 25px;
+            font-size: 1.2rem;
+            color: #2d3436;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>🌍 Earthquake Prediction System</h2>
+    
+    <form action="/predict" method="post">
+        <input type="number" name="month" placeholder="Month (1-12)" required><br>
+        <input type="text" name="latitude" placeholder="Latitude" required><br>
+        <input type="text" name="longitude" placeholder="Longitude" required><br>
+        <input type="text" name="depth" placeholder="Depth" required><br>
+        <input type="text" name="magType" placeholder="magType (encoded)" required><br>
+        <input type="text" name="nst" placeholder="nst" required><br>
+        <input type="text" name="gap" placeholder="gap" required><br>
+        <input type="text" name="dmin" placeholder="dmin" required><br>
+        <input type="text" name="rms" placeholder="rms" required><br>
+        <input type="text" name="net" placeholder="net (encoded)" required><br>
+        <input type="text" name="place" placeholder="place (encoded)" required><br>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction_text %}
+    <div class="result">
+        {{ prediction_text }}
+    </div>
+    {% endif %}
+</body>
+</html>
